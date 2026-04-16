@@ -41,6 +41,8 @@ The delivery pipeline automates the following flow:
 |-- app.js
 |-- buildspec.yml
 |-- Dockerfile
+|-- diagrams/
+|   `-- diagram.png
 |-- package.json
 |-- html/
 |   `-- index.html
@@ -97,6 +99,14 @@ The deployment depends on these environment variables being configured in CodeBu
 - `CONTAINER_NAME`
 
 ## CI/CD Workflow
+
+### Architecture Diagram
+
+The following diagram gives a visual overview of the AWS services involved in this project and how the deployment path is connected end to end.
+
+<p align="center">
+  <img src="./diagrams/diagram.png" alt="Architecture diagram for the Node.js CI/CD pipeline on AWS ECS" width="100%">
+</p>
 
 ```mermaid
 flowchart LR
