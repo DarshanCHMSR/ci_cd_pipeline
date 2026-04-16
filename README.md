@@ -103,12 +103,10 @@ The deployment depends on these environment variables being configured in CodeBu
 flowchart LR
     A[Developer Push] --> B[AWS CodeCommit]
     B --> C[AWS CodePipeline]
-    C --> D[AWS CodeBuild]
+    C --> H[AWS CodeBuild]
     D --> E[Docker Build]
     E --> F[Amazon ECR]
-    D --> G[imagedefinitions.json]
     F --> H[Amazon ECS Service]
-    G --> H
     H --> I[Running ECS Task]
     I --> J[Application Load Balancer]
 ```
