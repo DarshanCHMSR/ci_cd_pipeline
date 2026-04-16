@@ -18,8 +18,7 @@ The delivery pipeline automates the following flow:
 2. AWS CodePipeline detects a change and starts the pipeline.
 3. AWS CodeBuild builds the Docker image.
 4. The built image is pushed to Amazon ECR.
-5. An `imagedefinitions.json` artifact is generated.
-6. Amazon ECS pulls the new image and rolls out the updated task.
+5. Amazon ECS pulls the new image and rolls out the updated task.
 
 ## Tech Stack
 
@@ -103,12 +102,12 @@ The deployment depends on these environment variables being configured in CodeBu
 flowchart LR
     A[Developer Push] --> B[AWS CodeCommit]
     B --> C[AWS CodePipeline]
-    C --> H[AWS CodeBuild]
+    C --> D[AWS CodeBuild]
     D --> E[Docker Build]
     E --> F[Amazon ECR]
-    F --> H[Amazon ECS Service]
-    H --> I[Running ECS Task]
-    I --> J[Application Load Balancer]
+    F --> G[Amazon ECS Service]
+    G --> H[Running ECS Task]
+    H --> I[Application Load Balancer]
 ```
 
 ## How to Run Locally
@@ -234,8 +233,7 @@ When you push a change, the pipeline works like this:
 2. CodeBuild reads `buildspec.yml` and logs in to Amazon ECR.
 3. Docker builds the application image from the `Dockerfile`.
 4. CodeBuild pushes the image to ECR with the configured tag.
-5. CodeBuild writes `imagedefinitions.json` as a deployment artifact.
-6. The ECS deploy stage reads that artifact and updates the ECS service.
-7. ECS starts a new task using the new image and the load balancer shifts traffic to the healthy task.
+5. The ECS deploy stage updates the ECS service to use the new image.
+6. ECS starts a new task using the new image and the load balancer shifts traffic to the healthy task.
 
 .
