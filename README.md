@@ -246,4 +246,15 @@ When you push a change, the pipeline works like this:
 5. The ECS deploy stage updates the ECS service to use the new image.
 6. ECS starts a new task using the new image and the load balancer shifts traffic to the healthy task.
 
-.
+## Demo Video
+
+Watch a complete walkthrough of the CI/CD pipeline and deployment process:
+
+<p align="center">
+  <video controls width="100%" style="max-width: 800px;">
+    <source src="./video/demo-video%20(1).mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</p>
+
+Or download the video: [demo-video (1).mp4](./video/demo-video%20(1).mp4)
